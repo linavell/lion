@@ -1,28 +1,32 @@
 package com.arin.togetherlion.point.domain;
 
 import jakarta.persistence.Embeddable;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Embeddable
+@Getter
 @NoArgsConstructor
 public class Point {
+
     private int amount;
 
     public Point(int amount) {
-        if (amount < 0) {
-            throw new IllegalArgumentException("포인트는 음수가 될 수 없습니다.");
-        }
+        validateAmount(amount);
         this.amount = amount;
     }
 
-    public void plusPoint(int amount) {
+    public void plus(int amount) {
         this.amount += amount;
     }
 
-    public void minusPoint(int amount) {
-        if (this.amount - amount < 0) {
-            throw new IllegalArgumentException("포인트는 음수가 될 수 없습니다.");
-        }
+    public void minus(int amount) {
+        validateAmount(this.amount - amount);
         this.amount -= amount;
+    }
+
+    private void validateAmount(int amount) {
+        if (amount < 0)
+            throw new IllegalArgumentException("포인트는 음수가 될 수 없습니다.");
     }
 }
