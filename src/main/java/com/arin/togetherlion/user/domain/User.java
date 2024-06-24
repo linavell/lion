@@ -38,20 +38,6 @@ public class User extends BaseTimeEntity {
     @Embedded
     private Point point;
 
-    @OneToMany(mappedBy = "user")
-    private List<Copurchasing> copurchasings = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user")
-    private List<Participation> participations = new ArrayList<>();
-
-    public void addCopurchasing(Copurchasing copurchasing) {
-        this.copurchasings.add(copurchasing);
-    }
-
-    public void addParticipation(Participation participation) {
-        this.participations.add(participation);
-    }
-
     @Builder
     public User(String email, String password, String nickname) {
         this.email = email;

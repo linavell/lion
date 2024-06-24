@@ -62,7 +62,7 @@ public class Copurchasing extends BaseTimeEntity {
     @JoinColumn(name = "user_id")
     private User writer;
 
-    @OneToMany(mappedBy = "copurchasing")
+    @OneToMany
     private List<Participation> participations = new ArrayList<>();
 
     public void addParticipation(Participation participation) {
