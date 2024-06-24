@@ -20,7 +20,6 @@ public class Participation extends BaseTimeEntity {
     private Long id;
 
     @Column(name = "purchase_number", nullable = false)
-    @NotNull(message = "구매 개수는 필수 입력 값입니다.")
     private int purchaseNumber;
 
     @Column(name = "confirm_date")
@@ -28,24 +27,16 @@ public class Participation extends BaseTimeEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    @NotNull(message = "참여자는 필수 입력 값입니다.")
     private User user;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "copurchasing_id")
-    @NotNull(message = "공동구매 게시물은 필수 입력 값입니다.")
-    private Copurchasing copurchasing;
 
     public boolean isConfirm() {
         if (confirmDate == null)
             return false;
         return true;
     }
-
     @Builder
-    public Participation(int purchaseNumber, User user, Copurchasing copurchasing) {
+    public Participation(int purchaseNumber, User user) {
         this.purchaseNumber = purchaseNumber;
         this.user = user;
-        this.copurchasing = copurchasing;
     }
 }

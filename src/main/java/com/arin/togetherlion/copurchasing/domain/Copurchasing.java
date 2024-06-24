@@ -26,41 +26,33 @@ public class Copurchasing extends BaseTimeEntity {
 
     @Column(nullable = false)
     @Size(min = 1, max = 20)
-    @NotBlank(message = "제목은 필수 입력 값입니다.")
     private String title;
 
     @Size(max = 500)
     private String content;
 
     @Column(name = "product_total_cost", nullable = false)
-    @NotNull(message = "상품 가격은 필수 입력 값입니다.")
-    private int productTotalCost;
+    private ProductTotalCost productTotalCost;
 
     @Column(name = "shipping_cost", nullable = false)
-    @NotNull(message = "배송 가격은 필수 입력 값입니다.")
-    private int shippingCost;
+    private ShippingCost shippingCost;
 
     @Column(name = "product_url", nullable = false)
-    @NotBlank(message = "상품 페이지 url은 필수 입력 값입니다.")
     private String productUrl;
 
     @Column(name = "expiration_date")
     private LocalDateTime expirationDate;
 
     @Column(name = "product_min_number", nullable = false)
-    @NotNull(message = "상품 최소 개수는 필수 입력 값입니다.")
     private int productMinNumber;
 
     @Column(name = "product_max_number", nullable = false)
-    @NotNull(message = "상품 최대 개수는 필수 입력 값입니다.")
     private int productMaxNumber;
 
     @Column(name = "deadline_date", nullable = false)
-    @NotNull(message = "모집 마감 일자는 필수 입력 값입니다.")
     private LocalDateTime deadlineDate;
 
     @Column(name = "trade_date", nullable = false)
-    @NotNull(message = "거래 희망 일자는 필수 입력 값입니다.")
     private LocalDateTime tradeDate;
 
     @Column(name = "purchase_photo_url")
@@ -68,8 +60,7 @@ public class Copurchasing extends BaseTimeEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    @NotNull(message = "작성자는 필수 입력 값입니다.")
-    private User user;
+    private User writer;
 
     @OneToMany(mappedBy = "copurchasing")
     private List<Participation> participations = new ArrayList<>();
@@ -79,7 +70,7 @@ public class Copurchasing extends BaseTimeEntity {
     }
 
     @Builder
-    public Copurchasing(String title, String content, int productTotalCost, int shippingCost, String productUrl, LocalDateTime expirationDate, int productMinNumber, int productMaxNumber, LocalDateTime deadlineDate, String purchasePhotoUrl, LocalDateTime tradeDate, User user) {
+    public Copurchasing(String title, String content, ProductTotalCost productTotalCost, ShippingCost shippingCost, String productUrl, LocalDateTime expirationDate, int productMinNumber, int productMaxNumber, LocalDateTime deadlineDate, String purchasePhotoUrl, LocalDateTime tradeDate, User writer) {
         validateNumber(productMinNumber, productMaxNumber);
         validateDate(deadlineDate, tradeDate);
         this.title = title;
@@ -93,7 +84,7 @@ public class Copurchasing extends BaseTimeEntity {
         this.deadlineDate = deadlineDate;
         this.purchasePhotoUrl = purchasePhotoUrl;
         this.tradeDate = tradeDate;
-        this.user = user;
+        this.writer = writer;
     }
 
     private void validateNumber(int productMinNumber, int productMaxNumber) {
