@@ -23,8 +23,10 @@ public class CopurchasingCreateRequest {
     @Size(max = 500)
     private String content;
 
+    @NotNull(message = "상품 총 금액은 필수 입력 값입니다.")
     private ProductTotalCost productTotalCost;
 
+    @NotNull(message = "배송비는 필수 입력 값입니다.")
     private ShippingCost shippingCost;
 
     @NotBlank(message = "상품 페이지 url은 필수 입력 값입니다.")
@@ -44,8 +46,8 @@ public class CopurchasingCreateRequest {
     @NotNull(message = "거래 희망 일자는 필수 입력 값입니다.")
     private LocalDateTime tradeDate;
 
-    @Column(name = "purchase_photo_url")
     private String purchasePhotoUrl;
 
+    @NotNull(message = "작성자 Id는 필수 입력 값입니다.")
     private Long writerId;
 }
