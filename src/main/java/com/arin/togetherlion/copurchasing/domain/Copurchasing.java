@@ -3,8 +3,6 @@ package com.arin.togetherlion.copurchasing.domain;
 import com.arin.togetherlion.common.BaseTimeEntity;
 import com.arin.togetherlion.user.domain.User;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Builder;
