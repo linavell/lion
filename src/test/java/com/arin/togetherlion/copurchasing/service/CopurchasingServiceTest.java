@@ -31,7 +31,7 @@ class CopurchasingServiceTest {
 
     @Test
     @DisplayName("존재하지 않는 사용자가 게시물을 작성할 시 예외가 발생한다.")
-    void testName() throws Exception {
+    void notExistedUserCreate() throws Exception {
         //given
         Long notExistedUserId = 0L;
         final CopurchasingCreateRequest request = CopurchasingCreateRequest.builder()
