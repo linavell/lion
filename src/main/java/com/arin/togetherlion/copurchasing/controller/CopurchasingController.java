@@ -4,6 +4,7 @@ import com.arin.togetherlion.copurchasing.domain.dto.CopurchasingCreateRequest;
 import com.arin.togetherlion.copurchasing.service.CopurchasingService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +16,7 @@ import java.net.URI;
 @RequiredArgsConstructor
 public class CopurchasingController {
 
+    @Autowired
     private final CopurchasingService copurchasingService;
 
     @PostMapping("/copurchasings")

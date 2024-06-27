@@ -37,14 +37,14 @@ class CopurchasingServiceTest {
         final CopurchasingCreateRequest request = CopurchasingCreateRequest.builder()
                 .title("title")
                 .productMinNumber(1)
-                .productTotalCost(new ProductTotalCost(10000))
+                .productTotalCost(10000)
                 .purchasePhotoUrl("url")
                 .tradeDate(LocalDateTime.of(2024, 6, 25, 0, 0, 0))
                 .deadlineDate(LocalDateTime.of(2024, 6, 23, 0, 0, 0))
                 .productMaxNumber(5)
                 .content("content")
                 .productUrl("url")
-                .shippingCost(new ShippingCost(3000))
+                .shippingCost(3000)
                 .writerId(notExistedUserId)
                 .build();
 
@@ -69,14 +69,14 @@ class CopurchasingServiceTest {
         final CopurchasingCreateRequest request = CopurchasingCreateRequest.builder()
                 .title("title")
                 .productMinNumber(1)
-                .productTotalCost(new ProductTotalCost(10000))
+                .productTotalCost(10000)
                 .purchasePhotoUrl("url")
                 .tradeDate(LocalDateTime.of(2024, 6, 25, 0, 0, 0))
                 .deadlineDate(LocalDateTime.of(2024, 6, 23, 0, 0, 0))
                 .productMaxNumber(5)
                 .content("content")
                 .productUrl("url")
-                .shippingCost(new ShippingCost(3000))
+                .shippingCost(3000)
                 .writerId(userId)
                 .build();
         

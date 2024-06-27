@@ -9,12 +9,14 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Builder
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class CopurchasingCreateRequest {
 
     @NotBlank(message = "제목은 필수 입력 값입니다.")
@@ -24,10 +26,10 @@ public class CopurchasingCreateRequest {
     private String content;
 
     @NotNull(message = "상품 총 금액은 필수 입력 값입니다.")
-    private ProductTotalCost productTotalCost;
+    private int productTotalCost;
 
     @NotNull(message = "배송비는 필수 입력 값입니다.")
-    private ShippingCost shippingCost;
+    private int shippingCost;
 
     @NotBlank(message = "상품 페이지 url은 필수 입력 값입니다.")
     private String productUrl;

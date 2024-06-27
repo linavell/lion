@@ -1,6 +1,8 @@
 package com.arin.togetherlion.copurchasing.service;
 
 import com.arin.togetherlion.copurchasing.domain.Copurchasing;
+import com.arin.togetherlion.copurchasing.domain.ProductTotalCost;
+import com.arin.togetherlion.copurchasing.domain.ShippingCost;
 import com.arin.togetherlion.copurchasing.domain.dto.CopurchasingCreateRequest;
 import com.arin.togetherlion.copurchasing.repository.CopurchasingRepository;
 import com.arin.togetherlion.user.domain.User;
@@ -24,8 +26,8 @@ public class CopurchasingService {
         final Copurchasing copurchasing = Copurchasing.builder()
                 .title(request.getTitle())
                 .content(request.getContent())
-                .productTotalCost(request.getProductTotalCost())
-                .shippingCost(request.getShippingCost())
+                .productTotalCost(new ProductTotalCost(request.getProductTotalCost()))
+                .shippingCost(new ShippingCost(request.getShippingCost()))
                 .productUrl(request.getProductUrl())
                 .expirationDate(request.getExpirationDate())
                 .productMinNumber(request.getProductMinNumber())
