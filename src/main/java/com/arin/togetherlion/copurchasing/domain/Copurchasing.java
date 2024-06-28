@@ -61,7 +61,7 @@ public class Copurchasing extends BaseTimeEntity {
     private User writer;
 
     @OneToMany(orphanRemoval = true)
-    private List<Participation> participations;
+    private List<Participation> participations = new ArrayList<>();
 
     public void addParticipation(Participation participation) {
         this.participations.add(participation);
