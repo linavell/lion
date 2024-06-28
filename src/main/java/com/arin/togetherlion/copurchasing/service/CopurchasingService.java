@@ -62,12 +62,12 @@ public class CopurchasingService {
 
     private boolean isStarted(Copurchasing copurchasing) {
         List<Participation> participations = copurchasing.getParticipations();
-        if (copurchasing.getProductMaxNumber() <= participations.size())
-            return true;
-
-        if (copurchasing.getDeadlineDate().isBefore(LocalDateTime.now()) && copurchasing.getProductMinNumber() <= participations.size())
-            return true;
-
+        if (!participations.isEmpty()) {
+            if (copurchasing.getProductMaxNumber() <= participations.size())
+                return true;
+            if (copurchasing.getDeadlineDate().isBefore(LocalDateTime.now()) && copurchasing.getProductMinNumber() <= participations.size())
+                return true;
+        }
         return false;
     }
 
