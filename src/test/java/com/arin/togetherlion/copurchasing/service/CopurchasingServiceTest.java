@@ -1,5 +1,6 @@
 package com.arin.togetherlion.copurchasing.service;
 
+import com.arin.togetherlion.copurchasing.domain.Copurchasing;
 import com.arin.togetherlion.copurchasing.domain.ProductTotalCost;
 import com.arin.togetherlion.copurchasing.domain.ShippingCost;
 import com.arin.togetherlion.copurchasing.domain.dto.CopurchasingCreateRequest;
@@ -24,9 +25,18 @@ class CopurchasingServiceTest {
     private UserRepository userRepository;
     private CopurchasingService copurchasingService;
 
+    private User writer;
+    private Copurchasing testCopurchasing;
+
     @BeforeEach
     void setUp() {
         copurchasingService = new CopurchasingService(copurchasingRepository, userRepository);
+        writer = User.builder()
+                .email("email")
+                .password("password")
+                .nickname("nickname")
+                .build();
+
     }
 
     @Test
@@ -85,6 +95,13 @@ class CopurchasingServiceTest {
 
         //then
         Assertions.assertThat(copurchasingRepository.existsById(copurchasingId)).isTrue();
+    }
+
+    @Test
+    @DisplayName("사용자는 공동구매 게시물을 삭제할 수 있다.")
+    void delete() {
+        //given
+
 
     }
 
